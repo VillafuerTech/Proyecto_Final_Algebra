@@ -1,16 +1,56 @@
-Este script de Python está utilizando la biblioteca yfinance para descargar datos históricos semanales para la moneda Binance (BNB) de Yahoo Finance 
-para el año 2022. Los datos incluyen el precio de cierre para cada semana.
 
-Luego, el script extrae la columna 'Close' de los datos descargados y restablece el índice del DataFrame. Esto se hace para asegurar que el índice del DataFrame sea una secuencia de enteros, lo cual es necesario para las operaciones matriciales subsiguientes.
+# Linear Regression for Binance Coin (BNB) Price Prediction
 
-A continuación, el script crea una matriz de diseño X para el modelo de regresión lineal. La matriz de diseño es una matriz bidimensional donde la primera columna está llena de unos (representando el término de intercepción en el modelo de regresión lineal) y la segunda columna es el índice del DataFrame (representando el término de pendiente en el modelo de regresión lineal).
+This project implements a linear regression model to predict Binance Coin (BNB) daily closing prices using historical data from Yahoo Finance. It includes training the model on 2022 data and predicting prices for the first quarter of 2023.
 
-Luego, el script obtiene la variable dependiente y, que es el precio de cierre de BNB.
+## Features
 
-El script calcula los coeficientes del modelo de regresión lineal utilizando la fórmula theta = (X'X)^-1 X'y, donde X' es la transposición de X, ^-1 denota la inversión matricial, y y es la variable dependiente.
+- **Data Acquisition**: Uses `yfinance` to download historical daily closing prices for BNB.
+- **Linear Regression Model**: Implements matrix-based linear regression.
+- **Model Evaluation**: Calculates Mean Squared Error (MSE) for both the training set (2022) and test set (2023).
+- **Visualization**: Plots actual vs. predicted prices for both 2022 and 2023.
 
-El script luego usa los coeficientes calculados para hacer predicciones en el conjunto de datos de entrenamiento.
+## Requirements
 
-El script calcula el error cuadrático medio (MSE) de las predicciones en el conjunto de datos de entrenamiento. El MSE es una medida de la calidad del estimador: siempre es no negativo, y los valores más cercanos a cero son mejores.
+- Python 3.7+
+- Libraries:
+  - `yfinance`
+  - `pandas`
+  - `numpy`
+  - `matplotlib`
+  - `scikit-learn`
 
-Finalmente, el script traza los datos reales y las predicciones. Los datos reales se trazan como un gráfico de dispersión con marcadores circulares de tamaño 50, bordes negros y opacidad completa. Las predicciones se trazan como una línea roja. El eje x representa la fecha, y el eje y representa el precio de cierre de BNB. El gráfico incluye una leyenda y un título.
+Install dependencies using:
+```bash
+pip install yfinance scikit-learn matplotlib pandas numpy
+```
+
+## File Overview
+
+- **LinearRegressionBNBPrice.ipynb**: Jupyter Notebook containing the code for:
+  - Data fetching and preprocessing.
+  - Model training using 2022 data.
+  - Predictions for 2023 prices.
+  - Visualization of results.
+
+## Usage
+
+1. **Run the Notebook**: Execute the cells sequentially to:
+   - Download historical BNB prices.
+   - Train the model using 2022 data.
+   - Evaluate the model and generate predictions for 2023.
+2. **Visualize Results**: Examine the plots showing:
+   - Actual vs. predicted prices for 2022.
+   - Predictions for the first quarter of 2023.
+   - Overlay of real and predicted prices for 2023.
+
+## Outputs
+
+- **Error Metrics**: Mean Squared Error (MSE) for both training and test sets.
+- **Plots**:
+  - Daily closing prices for 2022 with predictions.
+  - Predicted vs. actual prices for Q1 2023.
+
+## License
+
+This project is open-source and available under the [MIT License](https://opensource.org/license/MIT).
